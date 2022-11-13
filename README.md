@@ -39,13 +39,16 @@ Step 2 : Go to https://github.com/RedisJSON/RedisJSON
 Step 3 : Choose a folder to download & Install the following piece of code
 
 Step 4 : Clone The RedisJSON Repository
-`bash git clone https://github.com/RedisJSON/RedisJSON.git `
+
+``bash git clone https://github.com/RedisJSON/RedisJSON.git ``
 
 Step 5 : Release it
-`bash cargo build --release (Make sure you have rust installed or run this command - curl https://sh.rustup.rs -sSf | sh )`
+
+``bash cargo build --release (Make sure you have rust installed or run this command - curl https://sh.rustup.rs -sSf | sh )``
 
 Step 6 : Start Redis server with --loadmodule args
-`bash redis-server --loadmodule ./your_release_directory_from_installed_RedisJSON/librejson.dylib`
+
+``bash redis-server --loadmodule ./your_release_directory_from_installed_RedisJSON/librejson.dylib``
 
 ## Example Redis JSON.SET command
 
