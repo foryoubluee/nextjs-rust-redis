@@ -61,7 +61,7 @@ Step 6 : Start Redis server with --loadmodule args
 redis-server --loadmodule ./your_release_directory_from_installed_RedisJSON/librejson.dylib
 ```
 
-## Example Redis JSON.SET command
+## Example Redis JSON command
 
 ```bash
 redis-cli
@@ -69,4 +69,8 @@ redis-cli
 
 ```bash
 JSON.SET movie $ '[{ "title": "Hello world", "description": "blablablablalbalbalb", "ratings": 8.0 },{ "title": "Toy story", "description": "toy story anjay mabar broh", "ratings": 8.9 },{ "title": "Alladin", "description": "Alladin arap apa india sih dia?", "ratings": 8.7 }]'
+```
+
+```bash
+JSON.GET movie
 ```
