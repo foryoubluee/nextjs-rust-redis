@@ -47,7 +47,12 @@ git clone https://github.com/RedisJSON/RedisJSON.git
 Step 5 : Release it
 
 ```bash 
-cargo build --release (Make sure you have rust installed or run this command - curl https://sh.rustup.rs -sSf | sh )
+cargo build --release
+```
+
+(Make sure you have rust installed or run this command)
+```bash
+curl https://sh.rustup.rs -sSf | sh
 ```
 
 Step 6 : Start Redis server with --loadmodule args
