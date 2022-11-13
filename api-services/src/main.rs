@@ -1,7 +1,14 @@
-use redis::{RedisResult, RedisError, Client};
+#![feature(proc_macro_hygiene, decl_macro)]
 
+#[macro_use] 
+extern crate rocket;
 extern crate redis;
-#[macro_use] extern crate rocket;
+extern crate rocket_contrib;
+
+use std;
+use redis::RedisError;
+use rocket::{ignite, response::Debug};
+use rocket_contrib::json::Json;
 
 #[get("/")]
 fn index() -> &'static str {
@@ -9,17 +16,17 @@ fn index() -> &'static str {
 }
 
 #[get("/movie")]
-fn movie() -> String {
-    let client = redis::Client::open("127.0.0.1:6379").unwrap();
-    let mut con = client.get_connection().unwrap();
-    let movie : String = redis::cmd("GET").arg("movie").query(&mut con).unwrap();
-    format!("{}", movie)
+fn movie() -> Result<Json<String>, Debug<RedisError>> {
+    let redis_client = redis::Client::open("redis://127.0.0.1:6379")?;
+    let mut con = redis_client.get_connection()?;
+    let movie: String = redis::cmd("JSON.GET").arg("movie").query(&mut con)?; 
+    println!("{}", movie);
+    Ok(Json(movie))
 }
 
-#[launch]
-fn rocket() -> _ {
-    rocket::build()
+fn main() {
+    ignite()
         .mount("/", routes![index])
-        .mount("/movie", routes![movie])
+        .mount("/api", routes![movie])
+        .launch();
 }
-
