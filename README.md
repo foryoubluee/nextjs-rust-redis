@@ -25,3 +25,23 @@ pnpm create next-app --example with-tailwindcss with-tailwindcss-app
 ```
 
 Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+
+# REDIS CONFIGURATION
+
+**[If anybody doesn't have RedisJSON installed]**
+Step 1 : brew services stop redis
+Step 2 : Go to https://github.com/RedisJSON/RedisJSON
+Step 3 : Choose a folder to download & Install the following piece of code
+Step 4 : git clone https://github.com/RedisJSON/RedisJSON.git
+Step 5 : cargo build --release (Make sure you have rust installed or run this command - curl https://sh.rustup.rs -sSf | sh )
+Step 6 : redis-server --loadmodule ./your_release_directory_from_installed_RedisJSON/librejson.dylib
+
+**Redis json set command**
+
+```bash
+redis-cli
+```
+
+```bash
+JSON.SET movie $ '[{ "title": "Hello world", "description": "blablablablalbalbalb", "ratings": 8.0 },{ "title": "Toy story", "description": "toy story anjay mabar broh", "ratings": 8.9 },{ "title": "Alladin", "description": "Alladin arap apa india sih dia?", "ratings": 8.7 }]'
+```
